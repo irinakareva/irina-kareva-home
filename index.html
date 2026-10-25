@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Irina Kareva — Science &amp; Music</title>
+  <meta name="description" content="Irina Kareva: quantitative biologist and founder of Quercus Insights; contralto and vocal performer based in Boston.">
+  <link rel="canonical" href="https://irinakareva.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Irina Kareva — Science &amp; Music">
+  <meta property="og:description" content="Scientific consulting through Quercus Insights and vocal performance in Boston.">
+  <meta property="og:url" content="https://irinakareva.com/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --q-dark: #173b48;
+      --q-dark-2: #102f3a;
+      --q-orange: #f28a00;
+      --q-amber: #f6a800;
+      --q-teal: #4aa0b3;
+      --q-text: #f7f5ee;
+      --q-soft: #c9d3d5;
+      --m-paper: #f0dfbd;
+      --m-ink: #174b39;
+      --m-soft: #3f4d44;
+      --m-pine: #174b39;
+      --m-brass: #c45f1c;
+      --title-size: clamp(3.4rem, 6vw, 4.5rem);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; margin: 0; }
+    body { font-family: "Inter", Arial, sans-serif; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .split {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .panel {
+      position: relative;
+      min-width: 0;
+      padding: 48px clamp(34px, 5vw, 64px) 42px;
+      display: grid;
+      grid-template-rows: 42px 168px 116px 1fr;
+      overflow: hidden;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0);
+      pointer-events: none;
+      transition: background-color 180ms ease;
+    }
+
+    .panel:hover::after,
+    .panel:focus-visible::after { background: rgba(255, 255, 255, 0.045); }
+
+    .panel:focus-visible {
+      outline: 3px solid currentColor;
+      outline-offset: -6px;
+    }
+
+    .science {
+      background: linear-gradient(145deg, var(--q-dark), var(--q-dark-2));
+      color: var(--q-text);
+    }
+
+    .music {
+      background:
+        radial-gradient(circle at 100% 0%, rgba(196, 95, 28, 0.24), transparent 46%),
+        radial-gradient(circle at 0% 100%, rgba(23, 75, 57, 0.12), transparent 42%),
+        var(--m-paper);
+      color: var(--m-ink);
+    }
+
+    .label {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      align-self: start;
+      font-size: 0.69rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .science .label { color: var(--q-amber); }
+    .music .label { color: var(--m-brass); }
+
+    .title-row {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: var(--title-size);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+    }
+
+    h2 span { display: block; }
+    .science h2 { color: var(--q-text); }
+    .music h2 { color: var(--m-ink); }
+
+    .quercus-logo {
+      flex: 0 0 auto;
+      width: calc(var(--title-size) * 1.8);
+      height: calc(var(--title-size) * 1.8);
+      max-width: 124px;
+      max-height: 124px;
+      object-fit: cover;
+      clip-path: circle(47% at 50% 50%);
+    }
+
+    .description {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      align-self: start;
+      font-size: 0.875rem;
+      line-height: 1.72;
+    }
+
+    .description span { display: block; }
+    .science .description { color: var(--q-soft); }
+    .music .description { color: var(--m-soft); }
+
+    .destination {
+      position: relative;
+      z-index: 1;
+      align-self: end;
+      width: fit-content;
+      padding-bottom: 7px;
+      border-bottom: 1px solid currentColor;
+      font-size: 0.81rem;
+      font-weight: 500;
+    }
+
+    .science .destination { color: var(--q-teal); }
+    .music .destination { color: var(--m-brass); }
+
+    .arrow {
+      display: inline-block;
+      margin-left: 8px;
+      color: var(--q-orange);
+      font-size: 1rem;
+      transition: transform 180ms ease;
+    }
+
+    .music .arrow { color: var(--m-pine); }
+
+    .panel:hover .arrow,
+    .panel:focus-visible .arrow { transform: translateX(4px); }
+
+    @media (max-width: 700px) {
+      :root { --title-size: 3rem; }
+      .split { grid-template-columns: 1fr; }
+
+      .panel {
+        min-height: 440px;
+        padding: 32px 27px 30px;
+        grid-template-rows: 30px 112px 94px 1fr;
+      }
+
+      .quercus-logo { max-width: 88px; max-height: 88px; }
+      .description span { display: inline; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .panel::after, .arrow { transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="sr-only">Irina Kareva</h1>
+
+  <main class="split">
+    <a class="panel science" href="https://www.quercusinsights.com/" aria-label="Visit Quercus Insights, science and consulting">
+      <p class="label">Science &amp; consulting</p>
+      <div class="title-row">
+        <h2><span>Quercus</span><span>Insights</span></h2>
+        <img class="quercus-logo" src="quercus-logo.png" alt="">
+      </div>
+      <p class="description">
+        <span>Quantitative biology and modeling</span>
+        <span>for complex disease and therapy</span>
+        <span>development.</span>
+      </p>
+      <span class="destination">Visit Quercus Insights <span class="arrow" aria-hidden="true">→</span></span>
+    </a>
+
+    <a class="panel music" href="https://music.irinakareva.com/" aria-label="Visit Irina Kareva's vocal performance website">
+      <p class="label">Music</p>
+      <div class="title-row">
+        <h2><span>Vocal</span><span>Performance</span></h2>
+      </div>
+      <p class="description">
+        <span>Contralto specializing in early music,</span>
+        <span>chamber ensemble, Bach, and</span>
+        <span>precision-driven new work.</span>
+      </p>
+      <span class="destination">Visit music website <span class="arrow" aria-hidden="true">→</span></span>
+    </a>
+  </main>
+</body>
+</html>
